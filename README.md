@@ -15,14 +15,14 @@
 天气API来自和风天气：console.heweather.com
 提供的固件是针对esp_01s的，其他开发板请下载源码进行编译！  
 
-# 如果不香折腾直接使用编译好的固件请往下看  
+# 如果不想折腾直接使用编译好的固件请往下看  
 ### esp01s连线图：
 ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/esp01s%E7%94%B5%E8%B7%AF.png)
 ### 烧录注意事项
 esp01s与ttl链接方法：  
-01s   ttl  
-xt----rx
-rx----tx
+01s   ttl    
+xt----rx  
+rx----tx  
 vcc---3.3  
 ch----3.3  
 io0---gnd  
