@@ -11,7 +11,7 @@
 所需要的库：
 * u8g2
 * ArduinoJson
-* time(以提供)
+* time(以提供)  
 天气API来自和风天气：console.heweather.com
 提供的固件是针对esp_01s的，其他开发板请下载源码进行编译！  
 
