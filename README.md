@@ -8,10 +8,14 @@
 ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/%E5%B0%81%E9%9D%A2.jpg)
 ## 说明
 源码需要配合WiFi_link_tool配网库进行开发  
+所需要的库：
+* u8g2
+* ArduinoJson
+* time(以提供)
 天气API来自和风天气：console.heweather.com
 提供的固件是针对esp_01s的，其他开发板请下载源码进行编译！  
 
-# 关于固件
+# 如果不香折腾直接使用编译好的固件请往下看  
 ### esp01s连线图：
 ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/esp01s%E7%94%B5%E8%B7%AF.png)
 ### 烧录注意事项
