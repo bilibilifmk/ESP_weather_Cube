@@ -4,10 +4,11 @@
 公共天气API_KEY： e98f6584cc5c4430a084904315907cf8  
 （接口限制每天最多访问1000次如需稳定请自己申请（免费））
 
-# 视频：
+# 视频：https://www.bilibili.com/video/BV1WC4y1h7k4/
 ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/%E5%B0%81%E9%9D%A2.jpg)
 ## 说明
 源码需要配合WiFi_link_tool配网库进行开发  
+可直接访问设备的ip或http://OLED气象站/ 进行访问
 所需要的库：
 * u8g2
 * ArduinoJson
