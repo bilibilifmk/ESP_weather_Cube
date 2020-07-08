@@ -12,8 +12,8 @@
 * u8g2
 * ArduinoJson
 * time(以提供)  
-天气API来自和风天气：console.heweather.com
-提供的固件是针对esp_01s的，其他开发板请下载源码进行编译！  
+天气API来自和风天气：console.heweather.com  
+提供的固件是针对esp_01s的，其他开发板请下载源码进行编译！    
 
 # 如果不想折腾直接使用编译好的固件请往下看  
 ### esp01s连线图：
