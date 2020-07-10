@@ -1,8 +1,18 @@
 
 # 基于esp8266+0.96oled的气象站桌面时钟
 
+
+
+
 公共天气API_KEY： e98f6584cc5c4430a084904315907cf8  
 （接口限制每天最多访问1000次如需稳定请自己申请（免费））
+
+
+
+# 关于量产版本！！！
+ 目前在筹钱买原件做套件！！！！ 所有订制环氧树脂版本的人都会被当成投资人！ 这笔收益只会用来购买元件！   
+ ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/%E9%87%8F%E4%BA%A7%E7%89%88/1.png)  
+ 
 
 # 视频：https://www.bilibili.com/video/BV1WC4y1h7k4/   https://www.youtube.com/watch?v=PGy2pcDQg9c
 ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/%E5%B0%81%E9%9D%A2.jpg)
