@@ -1,6 +1,6 @@
 
 /*
-0.96 气象站 第一版
+0.96 气象站 第二版 使用新接口
 
 需要配合wifi_link_tool配网工具 地址：https://github.com/bilibilifmk/wifi_link_tool
 所需库：
@@ -34,16 +34,8 @@ by：发明控
 #endif
 
 String  keys  = "此处填入和风天气api_key";  // 接口地址：https://console.heweather.com/app/index
-String  dq  = "auto_ip"; //填入地区 文档地址 https://dev.heweather.com/docs/api/weather
-/*
-CN101010100
-116.40,39.9
-北京、 北京市、 beijing
-朝阳,北京、chaoyang,beijing
-60.194.130.1
-auto_ip 为当前网络ip地址
+String  dq  = "101010100"; //填入城市编号  获取编号 https://where.heweather.com/index.html
 
-*/
 
 
 #define sck D1 /* 屏幕 */
@@ -330,34 +322,34 @@ void tubiao()
 /* //////////////////////////////////////////////////天气数据 */
 void xx()
 {
-  String line;
+String line;
+std::unique_ptr<BearSSL::WiFiClientSecure>client(new BearSSL::WiFiClientSecure);  
+    client->setInsecure();  
+    HTTPClient https;  
+  if (https.begin(*client, "https://devapi.heweather.net/v7/weather/now?gzip=n&location="+dq+"&key="+keys))
+  {  
+      int httpCode = https.GET();  
+      if (httpCode > 0) {  
+        if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY) {  
+          line = https.getString();  
+  
+      
+        }  
+      } 
+  
+      https.end();  
+    } else {  
+      Serial.printf("[HTTPS]请求链接失败\n");  
+    } 
+    
 
-  client->setInsecure();
-  HTTPClient https;
-  if ( https.begin( *client, "https://free-api.heweather.net/s6/weather/now?&location=" + dq + "&key=" + keys ) )
-  {
-    int httpCode = https.GET();
-    if ( httpCode > 0 )
-    {
-      if ( httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY )
-      {
-        line = https.getString();
-      }
-    }
-
-    https.end();
-  } else {
-    Serial.printf( "[HTTPS]请求链接失败\n" );
-  }
-
-
-  Serial.println( "接口返回" + line );
-  DynamicJsonBuffer jsonBuffer( 1024 );
-  JsonObject &    res_json  = jsonBuffer.parseObject( line );
-  String      r1    = res_json["HeWeather6"][0]["basic"]["location"];       /* 地区 */
-  int     r2    = res_json["HeWeather6"][0]["now"]["cond_code"];        /* 天气 */
-  String      r3    = res_json["HeWeather6"][0]["now"]["fl"];               /* 体感温度 */
-  jsonBuffer.clear();
+Serial.println("接口返回"+line);
+DynamicJsonBuffer jsonBuffer(1024);
+JsonObject& res_json = jsonBuffer.parseObject(line);
+String r1=res_json["basic"]["location"];//地区
+int r2=res_json["now"]["icon"];//天气
+String r3=res_json["now"]["feelsLike"];//体感温度
+jsonBuffer.clear();
   diqu  = r1;                                                                                   /* 地区 */
   tq  = r2;                                                                                   /* 天气 */
   wendu = r3;                                                                                   /* 体感温度 */
@@ -366,32 +358,33 @@ void xx()
 
 void pm()
 {
-  String line;
+ 
+String line;
+   std::unique_ptr<BearSSL::WiFiClientSecure>client(new BearSSL::WiFiClientSecure);  
+    client->setInsecure();  
+    HTTPClient https;  
+  if (https.begin(*client, "https://devapi.heweather.net/v7/air/now?gzip=n&location="+dq+"&key="+keys))
+  {  
+      int httpCode = https.GET();  
+      if (httpCode > 0) {  
+        if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY) {  
+         line = https.getString();  
+  
+          
+        }  
+      } 
+  
+      https.end();  
+    } else {  
+      Serial.printf("[HTTPS]请求链接失败\n");  
+    } 
 
-  client->setInsecure();
-  HTTPClient https;
-  if ( https.begin( *client, "https://free-api.heweather.net/s6/air/now?&location=" + dq + "&key=" + keys ) )
-  {
-    int httpCode = https.GET();
-    if ( httpCode > 0 )
-    {
-      if ( httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY )
-      {
-        line = https.getString();
-      }
-    }
 
-    https.end();
-  } else {
-    Serial.printf( "[HTTPS]请求链接失败\n" );
-  }
-
-
-  Serial.println( "接口返回" + line );
-  DynamicJsonBuffer jsonBuffer( 1024 );
-  JsonObject &    res_json  = jsonBuffer.parseObject( line );
-  String      r1    = res_json["HeWeather6"][0]["air_now_city"]["pm25"];    /* pm25 */
-  jsonBuffer.clear();
+Serial.println("接口返回"+line);
+DynamicJsonBuffer jsonBuffer(1024);
+JsonObject& res_json = jsonBuffer.parseObject(line);
+String r1=res_json["now"]["pm2p5"];//pm25
+jsonBuffer.clear();
   if ( r1 != "" )
   {
     pm2 = r1;                                                                               /* pm2.5 */
