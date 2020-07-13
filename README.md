@@ -1,4 +1,4 @@
-
+### 请尊重开源协议，谢谢！！！！
 # 基于esp8266+0.96oled的气象站桌面时钟
 
 # 视频：https://www.bilibili.com/video/BV1WC4y1h7k4/   https://www.youtube.com/watch?v=PGy2pcDQg9c
