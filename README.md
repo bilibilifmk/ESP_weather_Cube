@@ -2,7 +2,7 @@
 # 基于esp8266+0.96oled的气象站桌面时钟
 
 # 视频：https://www.bilibili.com/video/BV1WC4y1h7k4/   https://www.youtube.com/watch?v=PGy2pcDQg9c
-
+![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/%E5%B0%81%E9%9D%A2.jpg)
 ## 关于固件版本信息  
 * v1 接口将在2021.12.30日后失效在次之前是能用的
 * v2 新接口 请勿使用，发现致命问题，接口变化没有改源代码。
@@ -21,7 +21,7 @@
  
 
 
-![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/%E5%B0%81%E9%9D%A2.jpg)
+
 ## 说明
 源码需要配合WiFi_link_tool配网库进行开发  
 可直接访问设备的ip或http://OLED气象站/ 进行访问
