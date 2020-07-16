@@ -17,6 +17,15 @@
 
 # 关于量产版本！！！
 ###  电路设计及pcb 请访问立创eda：https://oshwhub.com/hbk444/qi-xiang-zhan01  
+ 
+ 
+ ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/4545.png)  
+ 
+ ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/54.png)  
+ 
+ ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/pcb.png)  
+ 
+ 
  ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/%E9%87%8F%E4%BA%A7%E7%89%88/1.png)  
  
 
