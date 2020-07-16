@@ -17,6 +17,7 @@
 
 # 关于量产版本！！！
 ###  电路设计及pcb 请访问立创eda：https://oshwhub.com/hbk444/qi-xiang-zhan01  
+### pcb板兼容1.3寸oled屏 
  
  
  ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/4545.png)  
