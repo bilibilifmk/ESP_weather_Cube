@@ -1,14 +1,21 @@
 ### 请尊重开源协议，谢谢！！！！
 # 基于esp8266+0.96oled的气象站桌面时钟
 
-# 视频：https://www.bilibili.com/video/BV1WC4y1h7k4/ 
-# 量产版视频： https://www.bilibili.com/video/BV1T54y1S7PU/
-![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/%E5%B0%81%E9%9D%A2.jpg)
 ## 关于固件版本信息  
 * v1 接口将在2021.12.30日后失效在次之前是能用的
 * v2 新接口 请勿使用，发现致命问题，接口变化没有改源代码。
 * v3 1.修复了图标显示问题，2.删除了ota功能（空间有限 无法提供足够的ota空间 请保留rx tx 复用升级是没有问题的）3.优化了变量空间使其更稳定 4.修复配网重置bug（需要升级配网库）
+* v3b:该固件与v3核心部分一致，为哔哩哔哩up主专用固件，删除了pm2.5显示，增加了哔哩哔哩粉丝显示，本来想做负一屏的可惜i2c刷新太慢了动画不流畅，直接刷新太过突兀只能牺牲pm2.5了，由于删除了一个https请求，整体会更加稳定，更不容易发生32位处理器处理溢出问题。
 
+
+
+
+
+
+
+# 视频：https://www.bilibili.com/video/BV1WC4y1h7k4/ 
+# 量产版视频： https://www.bilibili.com/video/BV1T54y1S7PU/
+![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/%E5%B0%81%E9%9D%A2.jpg)
 
 
 ### 公共天气API_KEY： e98f6584cc5c4430a084904315907cf8  
@@ -42,6 +49,14 @@
 * time(以提供)  
 天气API来自和风天气：console.heweather.com  
 提供的固件是针对esp_01s的，其他开发板请下载源码进行编译！    
+
+# 关于b站up主专用固件（v3b）
+效果  
+![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/v3bb.png)  
+后台  
+![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/uid.png)    
+获取uid 电脑个人主页后数字，手机版在个人资料中  
+![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/buid.png)      
 
 # 如果不想折腾直接使用编译好的固件请往下看  
 ### esp01s连线图：
