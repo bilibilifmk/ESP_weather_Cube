@@ -6,7 +6,7 @@
 * v2 新接口 请勿使用，发现致命问题，接口变化没有改源代码。
 * v3 1.修复了图标显示问题，2.删除了ota功能（空间有限 无法提供足够的ota空间 请保留rx tx 复用升级是没有问题的）3.优化了变量空间使其更稳定 4.修复配网重置bug（需要升级配网库）
 * v3b:该固件与v3核心部分一致，为哔哩哔哩up主专用固件，删除了pm2.5显示，增加了哔哩哔哩粉丝显示，本来想做负一屏的可惜i2c刷新太慢了动画不流畅，直接刷新太过突兀只能牺牲pm2.5了，由于删除了一个https请求，整体会更加稳定，更不容易发生32位处理器处理溢出问题。
-
+* v4 增加对pc性能显示，其他功能不变，需要使用上位机和aida64，采用pc请求气象站方式，大幅减少因串口通信或建立web通信所需要的性能损失。  
 
 
 
@@ -49,6 +49,14 @@
 * time(以提供)  
 天气API来自和风天气：console.heweather.com  
 提供的固件是针对esp_01s的，其他开发板请下载源码进行编译！    
+
+# pc性能显示
+ 需要配合aida64，并且开启内存共享  
+ ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/PC%E4%B8%8A%E4%BD%8D%E6%9C%BA/1.png)  
+ ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/PC%E4%B8%8A%E4%BD%8D%E6%9C%BA/2.png)  
+ 
+ 注 上位机部分代码来自他人项目，所以就不开源了。 项目地址：https://gitee.com/optimouskiller/AIDA64InfoReader  
+ 
 
 # 关于b站up主专用固件（v3b）
 效果  
