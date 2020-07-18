@@ -1,6 +1,6 @@
 
 /*
-0.96 气象站 第三版 使用新接口 修复图标不正确
+0.96 气象站 第四版 更新pc性能显示
 
 需要配合wifi_link_tool配网工具 地址：https://github.com/bilibilifmk/wifi_link_tool
 所需库：
@@ -61,7 +61,7 @@ unsigned long     previousMillis2 = 0;
 const long        interval2 = 7200000;      /* 两小时更新天气 */
 int         one   = 0;
 int         logo    = 0;
-
+int pcboot=0; //pc请求识别
 IPAddress timeServer( 120, 25, 115, 20 );                         /* 阿里云ntp服务器 如果失效可以使用 120.25.115.19   120.25.115.20 */
 #define STD_TIMEZONE_OFFSET +8                                     /* 设置中国 */
 const int timeZone = 8;                                            /* 修改北京时区 */
@@ -103,7 +103,7 @@ void setup()
   u8g2.print( "WiFi to Link" );
   u8g2.sendBuffer();
 
-
+  webServer.on("/pc", pc);//pc请求
   load();
   /* 初始化WiFi link tool */
   Serial.println( "设置 UDP" );
@@ -220,99 +220,93 @@ void sjfx()
 }
 
 
-void shuaxin()
-{
-  /* setSyncProvider(getNtpTime); */
-  String zov = "";
-  if ( hour() < 10 )
-  {
-    zov = "0";
-  }
-  if ( minute() < 10 )
-  {
-    tim = zov + String( hour() ) + ":0" + String( minute() );
-  }else{ tim = zov + String( hour() ) + ":" + String( minute() ); }
-  dat = String( year() ) + "/" + String( month() ) + "/" + String( day() );
-  Serial.print( tim );    /* 输出当前网络分钟 */
-  Serial.print( dat );    /* 输出当前日期 */
-  u8g2.clearBuffer();
-/*  */
-  tubiao();
+void shuaxin(){
 
+if(pcboot==0){
 
-  u8g2.setFont( u8g2_font_ncenB18_tf );
-  u8g2.setFontDirection( 0 );
-  u8g2.setCursor( 65, 53 );
-  u8g2.print( wendu );    /* 温度 */
-  u8g2.setFont( u8g2_font_6x10_tf );
-  u8g2.setFontDirection( 0 );
-  u8g2.setCursor( 60, 64 );
-  u8g2.print( dat );      /* 日期 */
-  u8g2.drawXBMP( 100, 32, 25, 25, col_ssd );
-  u8g2.setFont( u8g2_font_ncenR12_tf );
-  u8g2.setFontDirection( 0 );
-  u8g2.setCursor( 0, 48 );
-  u8g2.print( "pm2.5" );
-  u8g2.setCursor( 10, 62 );
-  u8g2.print( pm2 );      /* pm2.5 浓度 */
-  u8g2.setFont( u8g2_font_fub25_tf );
-  u8g2.setFontDirection( 0 );
-  u8g2.setCursor( 40, 32 );
-  u8g2.print( tim );
-  u8g2.sendBuffer();
-}
+  WiFi.hostByName(ntpServerName, timeServerIP);
 
-void tubiao( ){
-  if (col==100||col==150){  //晴      
- u8g2.drawXBMP(0,0,40,40,col_100);    
-   
-  }else if (col==102||col==101){        
- u8g2.drawXBMP(0,0,40,40,col_102);//云 
-         
-  }else  if (col==103||col==153){        
- u8g2.drawXBMP(0,0,40,40,col_103);//晴间多云 
-           
-  }else if (col==104||col==154){        
- u8g2.drawXBMP(0,0,40,40,col_104);//阴   
-         
-  }else if (col>=300&&col<=301){        
- u8g2.drawXBMP(0,0,40,40,col_301);//阵雨 
-           
-  }else if (col>=302&&col<=303){        
- u8g2.drawXBMP(0,0,40,40,col_302);//雷阵雨   
-     
-  }else if (col==304){        
- u8g2.drawXBMP(0,0,40,40,col_304);//冰雹  
-         
-  }else if (col==399||col==314||col==305||col==306||col==307||col==315||col==350||col==351){        
- u8g2.drawXBMP(0,0,40,40,col_307);//雨   
-        
-  }else if ((col>=308&&col<=313)||(col>=316&&col<=318)){        
- u8g2.drawXBMP(0,0,40,40,col_310);//暴雨    
-       
-  }else if ((col>=402&&col<=406)||col==409||col==410||col==400||col==401||col==408||col==499||col==456){        
- u8g2.drawXBMP(0,0,40,40,col_401);//雪  
-         
-  }else if (col==407||col==457){        
- u8g2.drawXBMP(0,0,40,40,col_407);//阵雪  
-          
-  }else if (col>=500&&col<=502){        
- u8g2.drawXBMP(0,0,40,40,col_500);//雾霾  
-          
-  }else if (col>=503&&col<=508){        
- u8g2.drawXBMP(0,0,40,40,col_503);//沙尘暴 
-           
-  }else if (col>=509&&col<=515){        
- u8g2.drawXBMP(0,0,40,40,col_509);//不适宜生存  
-        
-  }else{      
- u8g2.drawXBMP(0,0,40,40,col_999);//未知
-  }
+  sendNTPpacket(timeServerIP); // send an NTP packet to a time server
+  // wait to see if a reply is available
+  delay(1000);
+  
+  setSyncProvider(getNtpTime);
+  String zov="";
+ if(hour()<10){ zov ="0";}
+if (minute()<10){tim=zov+String(hour())+":0"+String(minute());}else{tim=zov+String(hour())+":"+String(minute());}
+ dat=String(year())+"/"+String(month())+"/"+String(day());
+ //Serial.print(tim);//输出当前网络分钟
+ //Serial.print(dat);//输出当前日期
+ u8g2.clearBuffer(); 
+//
+tubiao();
+ u8g2.setFont(u8g2_font_ncenB18_tf);  
+u8g2.setFontDirection(0); 
+u8g2.setCursor(65,53);
+u8g2.print(wendu);   //温度
+u8g2.setFont(u8g2_font_6x10_tf);  
+u8g2.setFontDirection(0);
+u8g2.setCursor(60,64);
+u8g2.print(dat);  //日期
+u8g2.drawXBMP(100,32,25,25,col_ssd);
+u8g2.setFont(u8g2_font_ncenR12_tf);  
+u8g2.setFontDirection(0);  
+u8g2.setCursor(0,48);
+u8g2.print("pm2.5");
+u8g2.setCursor(10,62);
+u8g2.print(pm2); //pm2.5 浓度
+u8g2.setFont(u8g2_font_fub25_tf);  
+u8g2.setFontDirection(0);
+u8g2.setCursor(40,32);
+u8g2.print(tim);
+u8g2.sendBuffer(); 
 
-
+  }else{
+    
+    pcboot=0;
+    }
 }
 
 
+
+
+
+void pc() {
+ pcboot=1;
+String clk=webServer.arg("clk");
+String cpu=webServer.arg("cpu");
+String ram=webServer.arg("ram");
+String cput=webServer.arg("cput");
+webServer.arg("cpuv");
+u8g2.clearBuffer();
+u8g2.drawXBMP(0,0,128,64,pctp);
+u8g2.setFont(u8g2_font_crox5hb_tf);  
+u8g2.setFontDirection(0); 
+u8g2.setCursor(33,25);
+u8g2.print(cpu);  //cpu
+u8g2.setCursor(33,57);
+u8g2.print(cput); //cput
+u8g2.setCursor(95,57);
+u8g2.print(ram); //ram
+u8g2.setFont(u8g2_font_ncenR10_tf);  
+u8g2.setFontDirection(0); 
+u8g2.setCursor(96,16);
+u8g2.print(clk); //mhz
+u8g2.setCursor(94,30);
+u8g2.print("MHz"); 
+
+
+
+u8g2.sendBuffer(); 
+  
+
+
+  
+ webServer.send(200, "text/plain", "ojbk");
+
+  
+}
+  
 
 /* //////////////////////////////////////////////////天气数据 */
 void xx()
