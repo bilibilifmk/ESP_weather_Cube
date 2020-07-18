@@ -12,7 +12,7 @@
 
 
 
-
+# v4固件视频： https://www.bilibili.com/video/BV1N54y1B7WW/
 # 视频：https://www.bilibili.com/video/BV1WC4y1h7k4/ 
 # 量产版视频： https://www.bilibili.com/video/BV1T54y1S7PU/
 ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/%E5%B0%81%E9%9D%A2.jpg)
