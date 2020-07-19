@@ -269,6 +269,57 @@ u8g2.sendBuffer();
 
 
 
+void tubiao( ){
+
+
+  if (col==100||col==150){  //晴      
+ u8g2.drawXBMP(0,0,40,40,col_100);    
+   
+  }else if (col==102||col==101){        
+ u8g2.drawXBMP(0,0,40,40,col_102);//云 
+         
+  }else  if (col==103||col==153){        
+ u8g2.drawXBMP(0,0,40,40,col_103);//晴间多云 
+           
+  }else if (col==104||col==154){        
+ u8g2.drawXBMP(0,0,40,40,col_104);//阴   
+         
+  }else if (col>=300&&col<=301){        
+ u8g2.drawXBMP(0,0,40,40,col_301);//阵雨 
+           
+  }else if (col>=302&&col<=303){        
+ u8g2.drawXBMP(0,0,40,40,col_302);//雷阵雨   
+     
+  }else if (col==304){        
+ u8g2.drawXBMP(0,0,40,40,col_304);//冰雹  
+         
+  }else if (col==399||col==314||col==305||col==306||col==307||col==315||col==350||col==351){        
+ u8g2.drawXBMP(0,0,40,40,col_307);//雨   
+        
+  }else if ((col>=308&&col<=313)||(col>=316&&col<=318)){        
+ u8g2.drawXBMP(0,0,40,40,col_310);//暴雨    
+       
+  }else if ((col>=402&&col<=406)||col==409||col==410||col==400||col==401||col==408||col==499||col==456){        
+ u8g2.drawXBMP(0,0,40,40,col_401);//雪  
+         
+  }else if (col==407||col==457){        
+ u8g2.drawXBMP(0,0,40,40,col_407);//阵雪  
+          
+  }else if (col>=500&&col<=502){        
+ u8g2.drawXBMP(0,0,40,40,col_500);//雾霾  
+          
+  }else if (col>=503&&col<=508){        
+ u8g2.drawXBMP(0,0,40,40,col_503);//沙尘暴 
+           
+  }else if (col>=509&&col<=515){        
+ u8g2.drawXBMP(0,0,40,40,col_509);//不适宜生存  
+        
+  }else{      
+ u8g2.drawXBMP(0,0,40,40,col_999);//未知
+  }
+
+
+}
 
 
 void pc() {
