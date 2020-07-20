@@ -21,7 +21,7 @@
 ### 公共天气API_KEY：
 * e98f6584cc5c4430a084904315907cf8   
 * c7d69f5c001b40ca83a9d2fd90ca509b  
-* 7deed586fbdf4a598ddcaa73c4c1580d
+* 7deed586fbdf4a598ddcaa73c4c1580d  
 （接口限制每天最多访问1000次如需稳定请自己申请（免费））
 
 
