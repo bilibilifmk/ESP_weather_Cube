@@ -224,22 +224,22 @@ void shuaxin(){
 
 if(pcboot==0){
 
-  WiFi.hostByName(ntpServerName, timeServerIP);
-
-  sendNTPpacket(timeServerIP); // send an NTP packet to a time server
-  // wait to see if a reply is available
-  delay(1000);
-  
-  setSyncProvider(getNtpTime);
-  String zov="";
- if(hour()<10){ zov ="0";}
-if (minute()<10){tim=zov+String(hour())+":0"+String(minute());}else{tim=zov+String(hour())+":"+String(minute());}
- dat=String(year())+"/"+String(month())+"/"+String(day());
- //Serial.print(tim);//输出当前网络分钟
- //Serial.print(dat);//输出当前日期
- u8g2.clearBuffer(); 
-//
-tubiao();
+ /* setSyncProvider(getNtpTime); */
+  String zov = "";
+  if ( hour() < 10 )
+  {
+    zov = "0";
+  }
+  if ( minute() < 10 )
+  {
+    tim = zov + String( hour() ) + ":0" + String( minute() );
+  }else{ tim = zov + String( hour() ) + ":" + String( minute() ); }
+  dat = String( year() ) + "/" + String( month() ) + "/" + String( day() );
+  Serial.print( tim );    /* 输出当前网络分钟 */
+  Serial.print( dat );    /* 输出当前日期 */
+  u8g2.clearBuffer();
+/*  */
+  tubiao();
  u8g2.setFont(u8g2_font_ncenB18_tf);  
 u8g2.setFontDirection(0); 
 u8g2.setCursor(65,53);
