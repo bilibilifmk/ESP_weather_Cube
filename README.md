@@ -59,7 +59,7 @@
  ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/PC%E4%B8%8A%E4%BD%8D%E6%9C%BA/1.png)  
  ![image](https://github.com/bilibilifmk/ESP_weather_Cube/blob/master/PC%E4%B8%8A%E4%BD%8D%E6%9C%BA/2.png)  
  
- 注 上位机部分代码来自他人项目，所以就不开源了。 项目地址：https://gitee.com/optimouskiller/AIDA64InfoReader  
+ 注 上位机部分代码来自他人项目，所以就不开源了。其中使用了该项目的内存读取方法及窗体事件等 将原有的串口通信删除并添加了网络请求功能  项目地址：https://gitee.com/optimouskiller/AIDA64InfoReader  
  
 
 # 关于b站up主专用固件（v3b）
