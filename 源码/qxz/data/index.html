@@ -1,0 +1,167 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv='Content-type' content='text/html; charset=utf-8'> 
+  <title>气象站管理系统</title> 
+
+  <style>
+
+body{text-align:center} 
+        h1{
+          color:#ff8eb3;
+       text-align:center;
+    font-size: 30px;
+    
+        }
+        h2{
+          color:#ff8eb3;
+          font-size: 40px;
+    
+    
+        }
+        p{
+            color:#ff8eb3;
+
+        }
+        a{
+            color:#ff8eb3;
+
+        }
+        h3{
+            color:#ff8eb3;
+
+        }
+        span{
+            color:#ff8eb3;
+          font-size: 75px;
+    
+    
+        }
+       
+    
+            .af {
+               
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+               
+                margin: 20px;
+                text-align: center;
+                font-size: 25px;
+                color: #fff;
+                background: #ff8eb3;
+              
+                
+            }
+            /*.af:hover{
+                opacity: 0.8;
+            }*/
+            .title {
+                font-size: 60px;
+                color: #ff8eb3;
+                margin-bottom: 30px;
+            }
+    
+            input {
+               
+                font-size: 25px;
+                margin-top: 25px;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                border-bottom: 3px solid #ff8eb3;
+                color: #ff8eb3;
+            }
+      #touch {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: 300px;
+        top: 79px;
+        margin-left: -30px;
+        margin-top: -30px;
+        z-index: 999999;
+    }
+    
+    
+    
+    
+    #simple-menu {
+        width: 60px;
+        height: 60px;
+        cursor: move;
+    }
+      </style>
+      <style lang="scss" scoped>
+    
+        .wave-mask {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 10px;
+            left: 55%;
+            border-radius: 40%;
+            background-color: rgba(212, 24, 24, 0.9);
+            transform: translate(-50%, -70%) rotate(0);
+            animation: toRotate 10s linear -5s infinite;
+            z-index: 20;
+        }
+    
+        @keyframes toRotate {
+            50% {
+                transform: translate(-50%, -70%) rotate(180deg);
+            }
+    
+            100% {
+                transform: translate(-50%, -70%) rotate(360deg);
+            }
+        }
+    
+        .container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #67c23a;
+            background: #ffffff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 5px;
+        }
+    
+        .wave {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-image: linear-gradient(-180deg, #aaff80 13%, #67c23a 91%);
+            border-radius: 50%;
+        }
+    
+        .container {
+            overflow: hidden;
+        }
+    
+        .wave-mask {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+      
+  </style>
+</head> 
+<body> 
+   
+  <h2>O.96OLED气象站设置平台</h2>
+  <p></p>
+  <h3>这里什么都没有</h3>
+
+ 
+
+
+ 
+
+</body> 
+
+
+
+
+</html>
