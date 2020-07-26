@@ -1,6 +1,6 @@
 
 /*
-0.96 气象站 第四版 更新pc性能显示
+0.96 气象站 第五版 配套源码
 
 需要配合wifi_link_tool配网工具 地址：https://github.com/bilibilifmk/wifi_link_tool
 所需库：
@@ -58,9 +58,8 @@ String          dat   = "2019/01/01";
 unsigned long     previousMillis  = 0;
 const long        interval  = 30000;        /* 30秒更新屏幕 */
 unsigned long     previousMillis2 = 0;
-const long        interval2 = 7200000;      /* 两小时更新天气 */
+const long        interval2 =1800000;      /* 半小时更新天气  */
 int         one   = 0;
-int         logo    = 0;
 int pcboot=0; //pc请求识别
 IPAddress timeServer( 120, 25, 115, 20 );                         /* 阿里云ntp服务器 如果失效可以使用 120.25.115.19   120.25.115.20 */
 #define STD_TIMEZONE_OFFSET +8                                     /* 设置中国 */
@@ -128,35 +127,12 @@ void setup()
     u8g2.sendBuffer();
     sjfx();
     delay( 1000 );
-
-   u8g2.sendBuffer();
-for(int i =0;i<=10;i++){
-u8g2.clearBuffer();
-u8g2.drawXBMP(44,0,40,64,logo1);
-u8g2.drawXBMP(75,51,49,11,by);
-u8g2.sendBuffer(); 
-  delay(50);
-u8g2.clearBuffer();
-u8g2.drawXBMP(44,0,40,64,logo2);
-u8g2.drawXBMP(75,51,49,11,by);
-u8g2.sendBuffer(); 
-  delay(50);
-u8g2.clearBuffer();
-u8g2.drawXBMP(44,0,40,64,logo3);
-u8g2.drawXBMP(75,51,49,11,by);
-u8g2.sendBuffer();
-  delay(50); 
-u8g2.clearBuffer();
-u8g2.drawXBMP(44,0,40,64,logo4);
-u8g2.drawXBMP(75,51,49,11,by);
-u8g2.sendBuffer(); 
-  delay(50);
-u8g2.clearBuffer();
-u8g2.drawXBMP(44,0,40,64,logo5);
-u8g2.drawXBMP(75,51,49,11,by);
-u8g2.sendBuffer(); 
-  delay(50);
- }
+    u8g2.sendBuffer();
+    u8g2.clearBuffer();
+    u8g2.drawXBMP(0,0,128,64,logo);
+    u8g2.sendBuffer();
+    delay(1000);
+  
     setSyncProvider( getNtpTime );
     shuaxin();
   }else{
