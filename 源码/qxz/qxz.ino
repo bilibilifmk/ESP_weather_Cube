@@ -86,7 +86,7 @@ void setup()
   /* 重置io */
   stateled = D4;
   /* 指示灯io */
-  Hostname = "0.96OLED气象站";
+  Hostname = "oled气象站";
   /* 设备名称 允许中文名称 不建议太长 */
   wxscan = true;
   /* 是否被小程序发现设备 开启意味该设备具有后台 true开启 false关闭 */
