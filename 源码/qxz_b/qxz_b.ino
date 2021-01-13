@@ -9,7 +9,8 @@ ArduinoJson
 time(以提供)
 by：发明控
 */
-
+#define FS_CONFIG
+//兼容1.1.x版本库
 
 #include <wifi_link_tool.h>
 #include <ArduinoJson.h>
